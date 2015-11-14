@@ -1,5 +1,5 @@
 {
-  "name": "language TSQL 2012",
+  "name": "language_TSQL_2012",
   "main": "./lib/tsql",
   "version": "0.0.0",
   "description": "T-SQL 2012 syntax",
