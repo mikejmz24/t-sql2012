@@ -1,0 +1,17 @@
+{
+  "name": "language T-SQL 2012",
+  "main": "./lib/tsql",
+  "version": "0.0.0",
+  "description": "T-SQL 2012 syntax",
+  "repository": "https://github.com/atom/t-sql2012",
+  "license": "MIT",
+  "bugs":{
+    "url": "https://github.com/mikejmnz/t-sql2012"
+  },
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "dependencies": {
+  }
+}

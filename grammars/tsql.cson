@@ -1,0 +1,419 @@
+'scopeName': 'source.tsql'
+'name': 'TSQL'
+'fileTypes': [
+  'ddl'
+  'dml'
+  'pgsql'
+  'sql'
+]
+'patterns': [
+  {
+    'include': '#comments'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.other.create.tsql'
+      '2':
+        'name': 'keyword.other.tsql'
+      '5':
+        'name': 'entity.name.function.tsql'
+    'match': '(?i:^\\s*(create(?:\\s+or\\s+replace)?)\\s+(procedure+(?!\\w)|xml schema collection|xml index|workload group|view|user|type|trigger|tablespace|table|synonym|symmetric key|statistics|spatial index|service|server role|server audit specification|server audit|sequence|selective xml index|security policy|search property list|schema|rule|route|role|resource pool|remote service|queue|proc|partition scheme|partition function|operator class|operator|message type|master key|login|language|group|function|fulltext stoplist|fulltext index|fulltext catalog|federation|external file format|external data source|event session|event notification|endpoint|domain|default|database scoped credential|database audit specification|database|cursor|cryptographic|credential|conversion|contract|columnstore index|columns master key|column encryption|certificate|broker priority|availability group|asymmetric key|assembly|application role|aggregate|(unique\\s+)?index)\\s+)([\'"`]?)(\\w+)\\4'
+    'name': 'meta.create.tsql'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.other.create.tsql'
+      '2':
+        'name': 'keyword.other.tsql'
+      '5':
+        'name': 'entity.name.function.tsql'
+    'match': '(?i:^\\s*(drop)\\s+(procedure+(?!\\w)|xml schema collection|xml index|workload group|view|user|type|trigger|tablespace|table|synonym|symmetric key|statistics|spatial index|service|server role|server audit specification|server audit|sequence|selective xml index|security policy|search property list|schema|rule|route|role|resource pool|remote service|queue|partition scheme|proc|partition function|operator class|operator|message type|master key|login|language|group|function|fulltext stoplist|fulltext index|fulltext catalog|federation|external file format|external data source|event session|event notification|endpoint|domain|default|database scoped credential|database audit specification|database|cursor|cryptographic|credential|conversion|contract|columnstore index|columns master key|column encryption|certificate|broker priority|availability group|asymmetric key|assembly|application role|aggregate|(unique\\s+)?index)\\s+)([\'"`]?)(\\w+)\\4'
+    'name': 'meta.drop.tsql'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.other.create.tsql'
+      '2':
+        'name': 'keyword.other.table.tsql'
+      '3':
+        'name': 'entity.name.function.tsql'
+      '4':
+        'name': 'keyword.other.cascade.tsql'
+    'match': '(?i:\\s*(drop)\\s+(table)\\s+(\\w+)(\\s+cascade)?\\b)'
+    'name': 'meta.drop.tsql'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.other.create.tsql'
+      '2':
+        'name': 'keyword.other.table.tsql'
+      '3':
+        'name': 'entity.name.function.tsql'
+      '4':
+        'name': 'keyword.other.cascade.tsql'
+    'match': '(?i:\\s*(truncate)\\s+(table)\\s+(\\w+)(\\s+cascade)?\\b)'
+    'name': 'meta.truncate.tsql'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.other.create.tsql'
+      '2':
+        'name': 'keyword.other.table.tsql'
+      '5':
+        'name': 'entity.name.function.tsql'
+    'match': '(?i:^\\s*(alter)\\s+(xml schema collection|xml index|workload group|view|user|type|trigger|tablespace|table|synonym|symmetric key|statistics|spatial index|service|server role|server audit specification|server audit|sequence|selective xml index|security policy|search property list|schema|rule|route|role|resource pool|remote service|queue|procedure+(?!\\w)|proc|partition scheme|partition function|operator class|operator|message type|master key|login|language|index|group|function|fulltext stoplist|fulltext index|fulltext catalog|federation|external file format|external data source|event session|event notification|endpoint|domain|default|database scoped credential|database audit specification|database|cursor|cryptographic|credential|conversion|contract|columnstore index|columns master key|column encryption|column|certificate|broker priority|availability group|asymmetric key|assembly|application role|aggregate|(unique\\s+)?index)\\s+)([\'"`]?)(\\w+)\\4'
+    'name': 'meta.alter.tsql'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'storage.type.sql'
+      '2':
+        'name': 'storage.type.sql'
+      '3':
+        'name': 'storage.type.sql'
+      '4':
+        'name': 'storage.type.sql'
+      '5':
+        'name': 'storage.type.sql'
+      '6':
+        'name': 'storage.type.sql'
+    'match': '(?xi)\\b
+    # Exact Numerics\n(bigint|numeric|bit|smallint|decimal|smallmoney|int+(?!\\w)|tinyint|money)\\(?,?;?\\s?|
+    # Approximate Numerics\n(real|float)\\(?,?;?\\s?|
+    # Date and Time\n(?!\\w)\\s?+(datetimeoffset|datetime2|smalldatetime|datetime|timestamp|date|time)+(?!\\w)\\(?,?;?\\s?|
+    # Character Strings\n\\s+(char|varchar|text|nchar|nvarchar|ntext)\\(?,?;?\\s?|
+    # Binary Strings\n(binary+(?!\\w)|varbinary|image)\\(?,?;?\\s?|
+    # Other Data Types\n(hierarchyid|uniqueidentifier|sql_variant|\\s+xml|geography|geometry)\\(?,?;?\\s?'
+  }
+  {
+    'match': '(?i:\\b((?=primary|foreign)\\s+key|references|on\\sdelete(\\s+cascade)?|check|constraint)\\b)'
+    'name': 'storage.modifier.tsql'
+  }
+  {
+    'match': '\\b\\d+\\b'
+    'name': 'constant.numeric.tsql'
+  }
+  {
+    'match': '(?i:\\b(select(\\s+distinct)?|INSERT+(?!\\w)|insert\\s+(ignore?\\s+)?into?|update|delete|from|set|where|group\\s+by|or|like|and|union(\\s+all)?|having|order\\s+by|limit|offset|(inner|cross)\\s+join|join|straight_join|(left|right)(\\s+outer)?\\s+join|natural(\\s+(left|right)(\\s+outer)?)?\\s+join|using)\\b)'
+    'name': 'keyword.other.DML.tsql'
+  }
+  {
+    'match': '(?i:\\b(on|(is\\s+)?(not\\s+)?null|auto_increment)\\b)'
+    'name': 'keyword.other.DDL.create.II.tsql'
+  }
+  {
+    'match': '(?i:\\bvalues\\b)'
+    'name': 'keyword.other.DML.II.tsql'
+  }
+  {
+    'match': '(?i:\\b(begin(\\s+work)?|start\\s+transaction|commit(\\s+work)?|rollback(\\s+work)?)\\b)'
+    'name': 'keyword.other.LUW.tsql'
+  }
+  {
+    'match': '(?i:\\b(grant(\\swith\\sgrant\\soption)?|revoke)\\b)'
+    'name': 'keyword.other.authorization.tsql'
+  }
+  {
+    'match': '(?i:(\\bnot\\s+)?\\bin\\b)'
+    'name': 'keyword.other.data-integrity.tsql'
+  }
+  {
+    'match': '(?i:^\\s*(comment\\s+on\\s+(table|column|aggregate|constraint|database|domain|function|index|operator|rule|schema|sequence|trigger|type|view))\\s+.*?\\s+(is)\\s+)'
+    'name': 'keyword.other.object-comments.tsql'
+  }
+  {
+    'match': '(?i)\\bAS\\b'
+    'name': 'keyword.other.alias.tsql'
+  }
+  {
+    'match': '(?i)\\b(DESC|ASC)\\b'
+    'name': 'keyword.other.order.tsql'
+  }
+  {
+    'match': '(?i)\\b(case|when|then|else|end)\\b'
+    'name': 'keyword.other.case.tsql'
+  }
+  {
+    'match': '\\*'
+    'name': 'keyword.operator.star.tsql'
+  }
+  {
+    'match': '[!<>]?=|<>|<|>'
+    'name': 'keyword.operator.comparison.tsql'
+  }
+  {
+    'match': '-|\\+|/'
+    'name': 'keyword.operator.math.tsql'
+  }
+  {
+    'match': '\\|\\|'
+    'name': 'keyword.operator.concatenator.tsql'
+  }
+  {
+    'comment': 'Analytic Functions List of SQL99 built-in functions from https://msdn.microsoft.com/en-us/library/hh213234.aspx'
+    'match': '(?i)\\b(PERCENTILE_DISC|PERCENTILE_CONT|PERCENT_RANK|LEAD|LAST_VALUE|LAG|FIRST_VALUE|CUME_DIST)+(?!\\w)'
+    'name': 'support.function.scalar.tsql'
+  }
+  {
+    'comment': 'Collation Functions List of SQL99 built-in functions from https://msdn.microsoft.com/en-us/library/ff848784.aspx'
+    'match': '(?i)\\b(COLLATIONPROPERTY|TERTIARY_WEIGHTS)+(?!\\w)'
+    'name': 'support.function.scalar.tsql'
+  }
+  {
+    'comment': 'Cryptographic Functions List of SQL99 built-in functions from https://msdn.microsoft.com/en-us/library/ms173744.aspx  '
+    'match': '(?i)\\b(VERIGYSIGNEDBYCERT|VERIFYSIGNEDBYASMKEY|SYMKEYPROPERTY|SIGNBYCERT|SIGNBYASYMKEY|KEY_NAME|KEY_ID|KEY_GUID|IS_OBJECTSIGNED|HASHBYTES|ENCRYPTBYPASSPHRASE|ENCRYPTBYKEY|ENCRYPTBYCert|ENCRYPTBYASYMKEY|DECRYPTBYPASSPHRASE|DecryptByKeyAutoCert|DECRYPTBYKEYAUTOASYMKEY|DECRYPTBYKEY|DECRYPTBYCERT|DECRYPTBYASYMKEY|CERTPRIVATEKEY|CERTENCODED|ASYMKEYPROPERTY|ASYMKEY_ID)+(?!\\w)'
+    'name': 'support.function.scalar.tsql'
+  }
+  {
+    'comment': 'Rowset Functions List of SQL99 built-in functions from http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html'
+    'match': '(?i)\\b(OPENDATASOURCE|OPENROWSET|OPENQUERY|OPENXML)+(?!\\w)'
+    'name': 'support.function.scalar.tsql'
+  }
+  {
+    'comment': 'Aggregate Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(VARP|VAR|SUM|STDEVP|STDEV|MIN|MAX|GROUPING_ID|GROUPING SETS|GROUPING|COUNT_BIG|COUNT|CHECKSUM_AGG|AVG)+(?!\\w)'
+    'name': 'support.function.aggregate.tsql'
+  }
+  {
+    'comment': 'Ranking Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(RANK|NTILE|DENSE_RANK|ROW_NUMBER)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'Configuration Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '@@(?i)\\b(DATEFIRST|OPTIONS|DBTS|REMSERVER|LANGID|SERVERNAME|LANGUAGE|SERVICENAME|LOCK_TIMEOUT|SPID|MAX_CONNECTIONS|TEXTSIZE|MAX_PRECISION|VERSION|NESTLEVEL)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'Conversion Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(CAST|CONVERT|PARSE|TRY_CAST|TRY_CONVERT|TRY_PARSE)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'Conversion Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'captures':
+      '1':
+        'name': 'support.function.string.tsql'
+      '2':
+        'name': 'support.function.string.tsql'
+    'match': '(?i)\\b(CURSOR_STATUS)|(@@+(CURSOR_ROWS|FETCH_STATUS))+(?!\\w)'
+  }
+  {
+    'comment': 'Date and Time Data Types and Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'captures':
+      '1':
+        'name': 'support.function.string.tsql'
+      '2':
+        'name': 'support.function.string.tsql'
+    'match': '(?i)\\b(SYSDATETIME|SYSDATETIMEOFFSET|SYSUTCDATETIME|CURRENT_TIMESTAMP|GETDATE|GETUTCDATE|DATENAME|DATEPART|DAY|MONTH|YEAR|DATEFROMPARTS|DATETIME2FROMPARTS|DATETIMEFROMPARTS|DATETIMEOFFSETFROMPARTS|SMALLDATETIMEFROMPARTS|TIMEFROMPARTS|DATEDIFF|DATEADD|EOMONTH|SWITCHOFFSET|TODATETIMEOFFSET|ISDATE)+(?!\\w)|
+    (@@+(DATEFIRST))+(?!\\w)'
+  }
+  {
+    'comment': 'Logical Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(CHOOSE|IIF)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'Mathematical Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(ABS|DEGREES|RAND|ACOS|EXP|ROUND|ASIN|FLOOR|SIGN|ATAN|LOG|SIN|ATN2|LOG10|SQRT|CEILING|PI|SQUARE|COS|POWER|TAN|COT|RADIANS)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'Metadata Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'captures':
+      '1':
+        'name': 'support.function.string.tsql'
+      '2':
+        'name': 'support.function.string.tsql'
+    'match': '(?i)\\b(INDEX_COL|APP_NAME|INDEXKEY_PROPERTY|APPLOCK_MODE|INDEXPROPERTY|APPLOCK_TEST|ASSEMBLYPROPERTY|OBJECT_DEFINITION|COL_LENGTH|OBJECT_ID|COL_NAME|OBJECT_NAME|COLUMNPROPERTY|OBJECT_SCHEMA_NAME|DATABASE_PRINCIPAL_ID|DATABASEPROPERTYEX|OBJECTPROPERTYEX|OBJECTPROPERTY|DB_ID|ORIGINAL_DB_NAME|DB_NAME|PARSENAME|FILE_ID|SCHEMA_ID|FILE_IDEX|SCHEMA_NAME|FILE_NAME|SCOPE_IDENTITY|FILEGROUP_ID|SERVERPROPERTY|FILEGROUP_NAME|STATS_DATE|FILEGROUPPROPERTY|TYPE_ID|FILEPROPERTY|TYPE_NAME|FULLTEXTCATALOGPROPERTY|TYPEPROPERTY|FULLTEXTSERVICEPROPERTY)+(?!\\w)|(@@+(PROCID))+(?!\\w)'
+  }
+  {
+    'comment': 'Security Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(CERTENCODED|PWDCOMPARE|CERTPRIVATEKEY|PWDENCRYPT|CURRENT_USER|SESSION_USER|SUSER_ID|SUSER_SID|HAS_PERMS_BY_NAME|SUSER_SNAME|IS_MEMBER|SYSTEM_USER|IS_ROLEMEMBER|SUSER_NAME|IS_SRVROLEMEMBER|USER_ID|ORIGINAL_LOGIN|USER_NAME|PERMISSIONS)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'String Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(ASCII|LTRIM|SOUNDEX|CHAR|NCHAR|SPACE|CHARINDEX|PATINDEX|STR|CONCAT|QUOTENAME|STUFF|DIFFERENCE|REPLACE|SUBSTRING|FORMAT|REPLICATE|UNICODE|REVERSE|UPPER|LEN|LOWER|RTRIM)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'System Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'captures':
+      '1':
+        'name': 'support.function.string.tsql'
+      '2':
+        'name': 'support.function.string.tsql'
+      '3':
+        'name': 'support.function.string.tsql'
+      '4':
+        'name': 'support.function.string.tsql'
+    'match': '(?i)\\b(ERROR_SEVERITY|ERROR_STATE|FORMATMESSAGE|GETANSINULL|GET_FILESTREAM_TRANSACTION_CONTEXT|HOST_ID|BINARY_CHECKSUM|HOST_NAME|CHECKSUM|ISNULL|CONNECTIONPROPERTY|ISNUMERIC|CONTEXT_INFO|MIN_ACTIVE_ROWVERSION|CURRENT_REQUEST_ID|NEWID|ERROR_LINE|NEWSEQUENTIALID|CURRENT_REQUEST_ID|ERROR_LINE|NEWSEQUENTIALID|ERROR_MESSAGE|ROWCOUNT_BIG|ERROR_NUMBER|XACT_STATE|ERROR_PROCEDURE)+(?!\\w)|(@@+(ERROR|IDENTITY|PACK_RECEIVED|ROWCOUNT|TRANCOUNT))+(?!\\w)|(\\$+(PARTITION))+(?!\\w)'
+  }
+  {
+    'comment': 'System Statistical Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '@@(?i)\\b(CONNECTIONS|CPU_BUSY|PACK_SENT|TIMETICKS|IDLE|TOTAL_ERRORS|IO_BUSY|TOTAL_READ|PACKET_ERRORS|TOTAL_WRITE)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'Text and Image Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(TEXTVALID|TEXTPTR)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'TSQL Functions Source From https://msdn.microsoft.com/en-us/library/ms174318.aspx'
+    'match': '(?i)\\b(RAISEERROR|COLLATE|COALESCE|CONTAINS|SETUSER|CURRENT_TIME|NULLIF|TSEQUAL)+(?!\\w)'
+    'name': 'support.function.string.tsql'
+  }
+  {
+    'comment': 'TSQL Server Reserved Words Source From https://msdn.microsoft.com/en-us/library/ms189822.aspx'
+    'match': '(?i)\\b(WRITETEXT|WITHIN GROUP|WITH|WHILE|WAITFOR|VARYING|USER|USE|UPDATETEXT|UNIQUE|TRANSACTION|TRAN|TOP|TO|TEXTSIZE|TABLESAMPLE|TABLE|STATISTICS|SHUTDOWN|SEMANTICSIMILARITYTABLE|SEMANTICSIMILARITYDETAILSTABLE|SEMANTICKEYPHRASETABLE|SECURITYAUDIT|SCHEMA|SAVE|RULE|ROWGUIDCOL|ROWCOUNT|REVERT|RETURN+S?|RESTRICT|RESTORE|REPLICATION|RECONFIGURE|READTEXT|READ|PUBLIC|PROCEDURE|PROC|PRINT|PRIMARY|PRECISION|PLAN|PERCENT|PASSWORD|OPTION|OPEN|OFFSETS|OFF|OF|NONCLUSTERED|NOCHECK|NATIONAL|MERGE|LOGIN|LOAD|LINENO|KILL|KEY|IS|INTO|INTERSECT|INDEX|IF|IDENTITYCOL|IDENTITY_INSERT|IDENTITY|HOLDLOCK|GROUP|GOTO|GO|FUNCTION|FULL|FREETEXTTABLE|FREETEXT|FOREIGN|FOR|FILLFACTOR|FILE|FETCH|EXTERNAL|EXIT|EXECUTE|EXEC|EXCEPT|ESCAPE|ERRLVL|DUMP|DOUBLE|DISTRIBUTED|DISTINCT|DISK|DENY|DEFAULT|DECLARE|DEALLOCATE|DBCC|CURSOR|CURRENT_DATE|CURRENT|CONTINUE|CONTAINSTABLE|COMPUTE|COLUMN|CLUSTERED|CLOSE|CHECKPOINT|BY|BULK|BROWSE|BREAK|BACKUP|AUTHORIZATION|ADD)+(?!\\w)'
+    'name': 'keyword.other.tsql'
+  }
+  {
+    'comment': 'TSQL Server Selectors Source From https://msdn.microsoft.com/en-us/library/ms189822.aspx'
+    'match': '(?i)\\b(ALL|ANY|BETWEEN|RIGHT|INNER|SOME|LEFT|CROSS|NOT|UNPIVOT|OUTER|OVER|PIVOT|EXISTS)+(?!\\w)'
+    'name': 'keyword.other.tsql'
+  }
+  {
+    'comment': 'Unassigned keywords'
+    'match': '(?i)\\b(VALUE|UNBOUNDED|TRY|THROW|SOURCE|SCHEMABINDING|ROWTERMINATOR|ROWS|ROW|PRECEDING|PARTITION BY|OUTPUT|ONLY|NOCOUNT|NO CYCLE|NEXT|MINVALUE|MATCHED|LAST_VALUE|IGNORE_DUP_KEY|FIRST_VALUE|FIRST|FIELDDETERMINATOR|DDL_DATABASE_LEVEL_EVENTS|DATAFILETYPE|DATABASE|CYCLE|CUBE|CROSS|CATCH|CASCADED|BOTH|BIT_LENGTH|AT|ASSERTION|ARE|APPLY|AFTER|ADA|ACTION|ABSOLUTE)+(?!\\w)'
+    'name': 'keyword.other.tsql'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'constant.other.database-name.tsql'
+      '2':
+        'name': 'constant.other.table-name.tsql'
+    'match': '(\\w+?)\\.(\\w+)'
+  }
+  {
+    'include': '#strings'
+  }
+]
+'repository':
+  'comments':
+    'patterns': [
+      {
+        'begin': '(^[ \\t]+)?(?=--)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.whitespace.comment.leading.tsql'
+        'end': '(?!\\G)'
+        'patterns': [
+          {
+            'begin': '--'
+            'beginCaptures':
+              '0':
+                'name': 'punctuation.definition.comment.tsql'
+            'end': '\\n'
+            'name': 'comment.line.double-dash.tsql'
+          }
+        ]
+      }
+      {
+        'begin': '/\\*'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.tsql'
+        'end': '\\*/'
+        'name': 'comment.block.c'
+      }
+    ]
+  'string_escape':
+    'match': '\\\\.'
+    'name': 'constant.character.escape.tsql'
+  'string_interpolation':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.string.end.tsql'
+    'match': '(#\\{)([^\\}]*)(\\})'
+    'name': 'string.interpolated.tsql'
+  'strings':
+    'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'punctuation.definition.string.begin.tsql'
+          '3':
+            'name': 'punctuation.definition.string.end.tsql'
+        'comment': 'this is faster than the next begin/end rule since sub-pattern will match till end-of-line and SQL files tend to have very long lines.'
+        'match': '(\')[^\'\\\\]*(\')'
+        'name': 'string.quoted.single.tsql'
+      }
+      {
+        'begin': '(?xi)N*\''
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.tsql'
+        'end': '\''
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.tsql'
+        'name': 'string.quoted.single.tsql'
+        'patterns': [
+          {
+            'include': '#string_escape'
+          }
+        ]
+      }
+      {
+        'captures':
+          '1':
+            'name': 'punctuation.definition.string.begin.tsql'
+          '3':
+            'name': 'punctuation.definition.string.end.tsql'
+        'comment': 'this is faster than the next begin/end rule since sub-pattern will match till end-of-line and SQL files tend to have very long lines.'
+        'match': '(`)[^`\\\\]*(`)'
+        'name': 'string.quoted.other.backtick.tsql'
+      }
+      {
+        'begin': '`'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.tsql'
+        'end': '`'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.tsql'
+        'name': 'string.quoted.other.backtick.tsql'
+        'patterns': [
+          {
+            'include': '#string_escape'
+          }
+        ]
+      }
+      {
+        'captures':
+          '1':
+            'name': 'punctuation.definition.string.begin.tsql'
+          '3':
+            'name': 'punctuation.definition.string.end.tsql'
+        'comment': 'this is faster than the next begin/end rule since sub-pattern will match till end-of-line and SQL files tend to have very long lines.'
+        'match': '(")[^"#]*(")'
+        'name': 'string.quoted.double.tsql'
+      }
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.tsql'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.tsql'
+        'name': 'string.quoted.double.tsql'
+        'patterns': [
+          {
+            'include': '#string_interpolation'
+          }
+        ]
+      }
+    ]
