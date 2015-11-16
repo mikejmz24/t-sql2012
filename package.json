@@ -1,18 +1,17 @@
 {
   "name": "language-TSQL-2012",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "T-SQL 2012 syntax",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/mikejmz24/tsql2012"
-    },
-  "bugs":{
+    "type": "git",
+    "url": "https://github.com/mikejmz24/tsql2012"
+  },
+  "bugs": {
     "url": "https://github.com/mikejmnz/tsql2012"
   },
-"license": "MIT",
+  "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
