@@ -11,8 +11,7 @@
   },
 "license": "MIT",
   "engines": {
-    "atom": "*",
-    "node": "*"
+    "atom": ">0.50.0"
   },
   "dependencies": {
   }
