@@ -4,10 +4,10 @@
   "description": "T-SQL 2012 syntax",
   "repository": {
       "type": "git",
-      "url": "https://github.com/mikejmz24/t-sql2012"
+      "url": "https://github.com/mikejmz24/tsql2012"
     },
   "bugs":{
-    "url": "https://github.com/mikejmnz/t-sql2012"
+    "url": "https://github.com/mikejmnz/tsql2012"
   },
 "license": "MIT",
   "engines": {
