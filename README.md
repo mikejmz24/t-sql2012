@@ -1,5 +1,5 @@
 # tsql package
 
-T-SQL 2012 syntax highligts
+SQL Server 2012 Transact SQL syntax highlights
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![A screenshot of your package](https://cloud.githubusercontent.com/assets/14935341/11319704/9ac6c91a-9034-11e5-92b9-b4c4a12bd4c8.PNG)

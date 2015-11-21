@@ -3,7 +3,7 @@
   "name": "language TSQL 2012",
   "main": "./lib/tsql",
   "version": "0.0.0",
-  "description": "T-SQL 2012 syntax",
+  "description": "SQL Server 2012 Transact SQL syntax",
   "repository": "https://github.com/mikejmz24/tsql2012",
   "license": "MIT",
   "bugs":{
