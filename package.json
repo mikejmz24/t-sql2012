@@ -10,7 +10,7 @@
 =======
   "name": "language-TSQL-2012",
   "version": "0.1.0",
-  "description": "T-SQL 2012 syntax",
+  "description": "SQL Server 2012 Transact SQL syntax",
   "repository": {
     "type": "git",
     "url": "https://github.com/mikejmz24/tsql2012"
