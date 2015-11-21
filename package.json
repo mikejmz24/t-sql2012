@@ -1,6 +1,6 @@
 {
   "name": "language-TSQL-2012",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SQL Server 2012 Transact SQL syntax",
   "repository": {
     "type": "git",
