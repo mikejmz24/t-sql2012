@@ -1,5 +1,5 @@
 'scopeName': 'source.tsql'
-'name': 'TSQL'
+'name': 'T-SQL'
 'fileTypes': [
   'ddl'
   'dml'
